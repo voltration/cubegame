@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { getMiddleIndex } from "$lib/arrayHelper";
-	import type { Color } from "$lib/types/Color";
 	import { onMount } from "svelte";
+	import Player from "./Player.svelte";
+	import { tileIndex } from "$lib/user.writable";
 
 
     export let array: any[];
     export let index: any;
 
     let div: HTMLDivElement;
+
 
     onMount(() => {
         if (index == getMiddleIndex(array)) {
@@ -30,5 +32,8 @@
 
 <body>
     <div bind:this={div} class="size-16 rounded-md flex items-center justify-center">
+        {#if $tileIndex == index}
+            <Player />
+        {/if}
     </div>
 </body>

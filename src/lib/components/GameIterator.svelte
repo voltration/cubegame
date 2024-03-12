@@ -1,13 +1,10 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import Box from "./Box.svelte";
-    import { getMiddleIndex } from "$lib/arrayHelper";
-    import Player from "./Player.svelte";
 
     export let array: string[];
 
     let div: HTMLDivElement;
-
     const sqrt = Math.round(Math.sqrt(array.length));
 
     onMount(() => {

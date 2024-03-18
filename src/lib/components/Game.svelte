@@ -4,9 +4,20 @@
     import GameIterator from "./GameIterator.svelte";
     import { onMount } from "svelte";
     import { getMiddleIndex } from "$lib/arrayHelper";
+	import { writable } from "svelte/store";
 
     let left: string[];
     let right: string[];
+
+    const leftWin = writable<boolean>(false);
+    const rightWin = writable<boolean>(false);
+
+    $: {
+        if ($leftWin && $rightWin) {
+            alert("You won!");
+        }
+        console.log($leftWin, $rightWin);
+    }
 
     onMount(() => {
         left = levels[$currentLevel].Left;
@@ -17,16 +28,12 @@
 <body>
     <div class="flex items-center justify-center h-screen">
         <div class="flex justify-between gap-24">
-            <div class="">
-                {#if left}
-                    <GameIterator index={getMiddleIndex(left)} array={left} />
-                {/if}
-            </div>
-            <div class="">
-                {#if right}
-                    <GameIterator index={getMiddleIndex(right)} array={right} />
-                {/if}
-            </div>
+            {#if left}
+            <GameIterator index={getMiddleIndex(left)} win={$leftWin} array={left} />
+            {/if}
+            {#if right}
+            <GameIterator index={getMiddleIndex(right)} win={$rightWin} array={right} />
+            {/if}
         </div>
     </div>
 </body>

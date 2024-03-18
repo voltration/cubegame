@@ -5,9 +5,17 @@
 
     export let array: string[];
     export let index: number;
+    export let win: boolean;
 
     export const gameArray = writable<string[]>(array);
     export const gameIndex = writable<number>(index);
+
+    $: {
+        if ($gameArray[$gameIndex] === "G") {
+            console.log("G");
+            win = true;
+        }
+    }
 
     let div: HTMLDivElement;
     const sqrt = Math.round(Math.sqrt(array.length));
@@ -19,37 +27,37 @@
     });
 
     export function onKeyDown(e: KeyboardEvent) {
-        switch (e.key) {
-            case "ArrowLeft":
-                if ($gameIndex % 3 === 0) {
-                    e.preventDefault();
-                } else {
-                    gameIndex.update((index) => index - 1);
-                }
-                break;
-            case "ArrowRight":
-                if (($gameIndex + 1) % 3 === 0) {
-                    e.preventDefault();
-                } else {
-                    gameIndex.update((index) => index + 1);
-                }
-                break;
-            case "ArrowUp":
-                if ($gameIndex < 3) {
-                    e.preventDefault();
-                } else {
-                    gameIndex.update((index) => index - 3);
-                }
-                break;
-            case "ArrowDown":
-                if ($gameIndex >= 6) {
-                    e.preventDefault();
-                } else {
-                    gameIndex.update((index) => index + 3);
-                }
-                break;
+    switch (e.key) {
+        case "ArrowLeft":
+            if ($gameIndex % 3 === 0 || $gameArray[$gameIndex - 1] === "R") {
+                e.preventDefault();
+            } else {
+                gameIndex.update((index) => index - 1);
             }
+            break;
+        case "ArrowRight":
+            if (($gameIndex + 1) % 3 === 0 || $gameArray[$gameIndex + 1] === "R") {
+                e.preventDefault();
+            } else {
+                gameIndex.update((index) => index + 1);
+            }
+            break;
+        case "ArrowUp":
+            if ($gameIndex < 3 || $gameArray[$gameIndex - 3] === "R") {
+                e.preventDefault();
+            } else {
+                gameIndex.update((index) => index - 3);
+            }
+            break;
+        case "ArrowDown":
+            if ($gameIndex >= ($gameArray.length / 3 - 1) * 3 || $gameArray[$gameIndex + 3] === "R") {
+                e.preventDefault();
+            } else {
+                gameIndex.update((index) => index + 3);
+            }
+            break;
         }
+    }
 </script>
 
 <svelte:window on:keydown={(e) => onKeyDown(e)} />

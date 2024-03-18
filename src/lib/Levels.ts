@@ -1,4 +1,6 @@
-export const Levels = {
+import type { Levels } from "./types/Levels";
+
+export const levels: Levels = {
     1: {
         Left: [
             "N", "N", "G",

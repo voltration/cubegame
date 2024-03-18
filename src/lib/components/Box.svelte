@@ -2,11 +2,11 @@
 	import { getMiddleIndex } from "$lib/arrayHelper";
 	import { onMount } from "svelte";
 	import Player from "./Player.svelte";
-	import { tileIndex } from "$lib/user.writable";
 
 
     export let array: any[];
     export let index: any;
+    export let playerIndex: any;
 
     let div: HTMLDivElement;
 
@@ -32,7 +32,7 @@
 
 <body>
     <div bind:this={div} class="size-16 rounded-md flex items-center justify-center">
-        {#if $tileIndex == index}
+        {#if playerIndex == index}
             <Player />
         {/if}
     </div>

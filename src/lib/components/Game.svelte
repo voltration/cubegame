@@ -1,34 +1,33 @@
 <script lang="ts">
-    import { currentLevel, tileIndex } from "$lib/user.writable";
-    import { Levels } from "$lib/Levels";
-	import GameIterator from "./GameIterator.svelte";
-	import { onDestroy, onMount } from "svelte";
-	import { writable } from "svelte/store";
-	import { getMiddleIndex } from "$lib/arrayHelper";
+    import { currentLevel, leftIndex, rightIndex } from "$lib/user.writable";
+    import { levels } from "$lib/Levels";
+    import GameIterator from "./GameIterator.svelte";
+    import { onDestroy, onMount } from "svelte";
+    import { getMiddleIndex } from "$lib/arrayHelper";
 
-
-    // @ts-expect-error
-    const left = Levels[$currentLevel].Left;
-    // @ts-expect-error
-    const right = Levels[$currentLevel].Right;
+    let left: string[];
+    let right: string[];
 
     onMount(() => {
-        tileIndex.set(getMiddleIndex(left));
+        left = levels[$currentLevel].Left;
+        right = levels[$currentLevel].Right;
+        leftIndex.set(getMiddleIndex(left));
+        rightIndex.set(getMiddleIndex(right));
     });
-
-    onDestroy(() => {
-        tileIndex.set(0);
-    })
 </script>
 
 <body>
     <div class="flex items-center justify-center h-screen">
         <div class="flex justify-between gap-24">
             <div class="border-4 border-pink-300">
-                <GameIterator array={left} />
+                {#if left}
+                    <GameIterator index={$leftIndex} array={left} />
+                {/if}
             </div>
             <div class="border-4 border-pink-300">
-                <GameIterator array={right} />
+                {#if right}
+                    <GameIterator index={$rightIndex} array={right} />
+                {/if}
             </div>
         </div>
     </div>

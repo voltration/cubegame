@@ -1,21 +1,14 @@
 <script lang="ts">
+	import { leftWin, rightWin } from "$lib/user.writable";
     import Box from "./Box.svelte";
     import { onMount } from "svelte";
 	import { writable } from "svelte/store";
 
     export let array: string[];
     export let index: number;
-    export let win: boolean;
 
     export const gameArray = writable<string[]>(array);
     export const gameIndex = writable<number>(index);
-
-    $: {
-        if ($gameArray[$gameIndex] === "G") {
-            console.log("G");
-            win = true;
-        }
-    }
 
     let div: HTMLDivElement;
     const sqrt = Math.round(Math.sqrt(array.length));

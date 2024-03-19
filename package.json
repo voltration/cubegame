@@ -34,6 +34,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource-variable/inter": "^5.0.17",
     "@threlte/core": "^7.2.1",
     "@threlte/extras": "^8.10.1",
     "@threlte/gltf": "^2.0.3",

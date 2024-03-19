@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.i200 {
+    font-family: 'Inter Variable', sans-serif;
+    font-weight: 300;
+}

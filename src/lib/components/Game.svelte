@@ -2,7 +2,6 @@
     import { currentLevel, leftWin, rightWin } from "$lib/user.writable";
     import { levels } from "$lib/Levels";
     import GameIterator from "./GameIterator.svelte";
-    import { onMount } from "svelte";
     import { getMiddleIndex } from "$lib/arrayHelper";
 
     let left: string[];

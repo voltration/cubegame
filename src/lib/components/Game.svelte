@@ -28,7 +28,7 @@
 <body>
     <div class="flex items-center justify-center h-screen">
         <div class="flex flex-col gap-12">
-            <p class="i200 text-center">Level: {$currentLevel}</p>
+            <p class="i300 text-center">Level: {$currentLevel}</p>
             <div class="flex justify-between gap-24">
                 {#key $currentLevel}
                     {#if left}

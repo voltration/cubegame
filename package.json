@@ -40,6 +40,7 @@
     "@threlte/gltf": "^2.0.3",
     "@types/three": "^0.162.0",
     "install": "^0.13.0",
-    "three": "^0.162.0"
+    "three": "^0.162.0",
+    "three.js": "^0.77.1"
   }
 }

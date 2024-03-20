@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { currentLevel } from "$lib/user.writable";
+    import { currentLevel, leftWin, rightWin } from "$lib/user.writable";
     import { levels } from "$lib/Levels";
     import GameIterator from "./GameIterator.svelte";
     import { onMount } from "svelte";
@@ -8,10 +8,21 @@
     let left: string[];
     let right: string[];
 
-    onMount(() => {
-        left = levels[$currentLevel].Left;
-        right = levels[$currentLevel].Right;
-    });
+    $: {
+        if ($leftWin && $rightWin) {
+            $currentLevel++;
+            $leftWin = false;
+            $rightWin = false;
+        }
+
+        const nextLevel = levels[$currentLevel];
+        left = nextLevel ? nextLevel.Left :  [];
+        right = nextLevel ? nextLevel.Right : [];
+
+        if (left || right === undefined) {
+            // TODO: handle no more levels
+        }
+    }
 </script>
 
 <body>
@@ -19,12 +30,14 @@
         <div class="flex flex-col gap-12">
             <p class="i200 text-center">Level: {$currentLevel}</p>
             <div class="flex justify-between gap-24">
-                {#if left}
-                <GameIterator index={getMiddleIndex(left)} array={left} />
-                {/if}
-                {#if right}
-                <GameIterator index={getMiddleIndex(right)} array={right} />
-                {/if}
+                {#key $currentLevel}
+                    {#if left}
+                        <GameIterator side="left" index={getMiddleIndex(left)} array={left} />
+                    {/if}
+                    {#if right}
+                        <GameIterator side="right" index={getMiddleIndex(right)} array={right} />
+                    {/if}
+                {/key}
             </div>
         </div>
     </div>

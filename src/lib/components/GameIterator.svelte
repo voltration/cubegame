@@ -6,9 +6,19 @@
 
     export let array: string[];
     export let index: number;
+    export let side: string;
 
     export const gameArray = writable<string[]>(array);
     export const gameIndex = writable<number>(index);
+
+    $: {
+        if ($gameArray[$gameIndex] === "G") {
+            side === "left" ? leftWin.set(true) : rightWin.set(true);
+        }
+        if ($gameArray[$gameIndex] === "N") {
+            side === "left" ? leftWin.set(false) : rightWin.set(false);
+        }
+    }
 
     let div: HTMLDivElement;
     const sqrt = Math.round(Math.sqrt(array.length));

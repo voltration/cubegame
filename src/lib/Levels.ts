@@ -23,8 +23,21 @@ export const levels: Levels = {
         
         Right: [
             "N", "N", "N",
+            "N", "N", "R",
+            "G", "N", "N",
+        ],
+    },
+    3: {
+        Left: [
+            "N", "R", "N",
             "N", "N", "N",
-            "N", "R", "G",
+            "N", "N", "G",
+        ],
+        
+        Right: [
+            "N", "N", "N",
+            "N", "N", "R",
+            "G", "N", "N",
         ],
     }
 }

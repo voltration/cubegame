@@ -9,8 +9,8 @@
         </div>
         <div class="flex justify-between fade-in-button">
             <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="game">play</a>
-            <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="game">browse levels</a>
-            <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="game">source code</a>
+            <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="levels">browse levels</a>
+            <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="https://github.com/voltration/cubegame">source code</a>
         </div>
     </div>
 </body>

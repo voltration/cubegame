@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { getMiddleIndex } from "$lib/arrayHelper";
 	import { onMount } from "svelte";
 	import Player from "./Player.svelte";
 

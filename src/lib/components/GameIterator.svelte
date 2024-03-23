@@ -11,57 +11,66 @@
     export const gameArray = writable<string[]>(array);
     export const gameIndex = writable<number>(index);
 
+    let div: HTMLDivElement;
+    let sqrt: number;
+
     $: {
-        if ($gameArray[$gameIndex] === "G") {
-            side === "left" ? leftWin.set(true) : rightWin.set(true);
-        }
         if ($gameArray[$gameIndex] === "N") {
             side === "left" ? leftWin.set(false) : rightWin.set(false);
         }
+        // race condition but this fixes it
+        setTimeout(() => {
+            if ($gameArray[$gameIndex] === "G") {
+                side === "left" ? leftWin.set(true) : rightWin.set(true);
+            }
+        }, 100)
     }
-
-    let div: HTMLDivElement;
-    const sqrt = Math.round(Math.sqrt(array.length));
 
     onMount(() => {
         if (div) {
+            sqrt = Math.sqrt(array.length);
             div.style.gridTemplateColumns = `repeat(${sqrt}, minmax(0, 1fr))`;
         }
     });
 
     export function onKeyDown(e: KeyboardEvent) {
+
     switch (e.key) {
         case "ArrowLeft":
-            if ($gameIndex % 3 === 0 || $gameArray[$gameIndex - 1] === "R") {
+            if ($gameIndex % sqrt === 0 || $gameArray[$gameIndex - 1] === "R") {
                 e.preventDefault();
             } else {
-                gameIndex.update((index) => index - 1);
+                gameIndex.update(index => index - 1);
             }
             break;
         case "ArrowRight":
-            if (($gameIndex + 1) % 3 === 0 || $gameArray[$gameIndex + 1] === "R") {
+            if (($gameIndex + 1) % sqrt === 0 || $gameArray[$gameIndex + 1] === "R") {
                 e.preventDefault();
             } else {
-                gameIndex.update((index) => index + 1);
+                gameIndex.update(index => index + 1);
             }
             break;
         case "ArrowUp":
-            if ($gameIndex < 3 || $gameArray[$gameIndex - 3] === "R") {
+            if ($gameIndex < sqrt || $gameArray[$gameIndex - sqrt] === "R") {
                 e.preventDefault();
             } else {
-                gameIndex.update((index) => index - 3);
+                gameIndex.update(index => index - sqrt);
             }
             break;
         case "ArrowDown":
-            if ($gameIndex >= ($gameArray.length / 3 - 1) * 3 || $gameArray[$gameIndex + 3] === "R") {
+            if (
+                $gameIndex >= (array.length - sqrt) ||
+                $gameArray[$gameIndex + sqrt] === "R"
+            ) {
                 e.preventDefault();
             } else {
-                gameIndex.update((index) => index + 3);
+                gameIndex.update(index => index + sqrt);
             }
             break;
-        }
     }
+}
 </script>
+
 
 <svelte:window on:keydown={(e) => onKeyDown(e)} />
 <body>

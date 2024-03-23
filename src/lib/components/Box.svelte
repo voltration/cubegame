@@ -10,28 +10,21 @@
 
     let div: HTMLDivElement;
 
+    const colorWays: { [key: string]: string } = {
+        "N": "bg-neutral-500",
+        "G": "bg-green-500",
+        "R": "bg-red-500"
+    };
+
+    const colorWay: string | undefined = colorWays[array[index]];
 
     onMount(() => {
-        if (index == getMiddleIndex(array)) {
-            div?.classList.add(`bg-blue-500`)
-        }
-
-        switch (array[index]) {
-            case "N":
-                div?.classList.add(`bg-gray-500`)
-                break;
-            case "G":
-                div?.classList.add(`bg-green-500`)
-                break;
-            case "R":
-                div?.classList.add(`bg-red-500`)
-                break;
-        }
+        div?.classList.add(colorWay)
     });
 </script>
 
 <body>
-    <div bind:this={div} class="size-16 rounded-md flex items-center justify-center">
+    <div bind:this={div} class="size-20 rounded-md flex items-center justify-center">
         {#if playerIndex == index}
             <Player />
         {/if}

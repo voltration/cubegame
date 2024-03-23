@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <body class="flex items-center justify-center h-screen w-screen">
     <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
     <div class="flex flex-col z-50">
@@ -26,10 +23,10 @@
     100% { opacity: 1; }
     }
     .fade-in-text {
-    animation: fadeInText 7s;
+    animation: fadeInText 1s;
     }
 
     .fade-in-button {
-    animation: fadeInButton 9s;
+    animation: fadeInButton 2s;
     }
 </style>

@@ -9,21 +9,23 @@
 
     let div: HTMLDivElement;
 
-    const colorWays: { [key: string]: string } = {
-        "N": "bg-neutral-500",
-        "G": "bg-green-500",
-        "R": "bg-red-500"
+    const colorWays: { [key: string]: { background: string, border: string } } = {
+        "N": { background: "bg-slate-500", border: "border-slate-600" },
+        "G": { background: "bg-[#439d75]", border: "border-[#285e46]" },
+        "R": { background: "bg-[#aa5c68]", border: "border-[#774049]" }
     };
 
-    const colorWay: string | undefined = colorWays[array[index]];
+    const colorWay = colorWays[array[index]];
 
     onMount(() => {
-        div?.classList.add(colorWay)
+        if (colorWay) {
+            div.classList.add(colorWay.background, colorWay.border);
+        }
     });
 </script>
 
 <body>
-    <div bind:this={div} class="size-20 rounded-md flex items-center justify-center">
+    <div bind:this={div} class="size-20 border-b-8 rounded-md flex items-center justify-center">
         {#if playerIndex == index}
             <Player />
         {/if}

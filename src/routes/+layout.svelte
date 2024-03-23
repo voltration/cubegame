@@ -13,6 +13,8 @@
   	}
 
 	onMount(() => {
+		calculateAspectRatio();
+		
 		if (aspectRatio !== 16 / 9) {
 			goto("/device");
 		}

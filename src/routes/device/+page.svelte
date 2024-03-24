@@ -6,13 +6,13 @@
                 <a href="/" class="i100 text-center text-white text-[4rem]">cube<span class="text-blue-500">game</span></a>
             </div>
             <div class="pt-4">
-                <p class="text-xl text-white i500">Your device does not meet the required criteria to play.</p>
+                <p class="text-xl text-white i400">Your device does not meet the required criteria to play.</p>
                 <br>
-                <p class="text-xl text-white i500 text-center">Make sure you have the following:</p>
+                <p class="text-xl text-white i400 text-center">Make sure you have the following:</p>
                 <br>
                 <div class="border-[1px]  p-4 rounded-md">
-                    <p class="text-xl text-white i500">• A keyboard</p>
-                    <p class="text-xl text-white i500">• A device with a 16/9 aspect ratio display</p>
+                    <p class="text-xl text-white i400">• A keyboard</p>
+                    <p class="text-xl text-white i400">• A device with a 16/9 aspect ratio display</p>
                 </div>
                 <p class="text-center pt-8">😭</p>
             </div>

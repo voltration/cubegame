@@ -34,9 +34,11 @@
     });
 
     export function onKeyDown(e: KeyboardEvent) {
+    const sqrt = Math.sqrt($gameArray.length);
 
     switch (e.key) {
         case "ArrowLeft":
+        case "a":
             if ($gameIndex % sqrt === 0 || $gameArray[$gameIndex - 1] === "R") {
                 e.preventDefault();
             } else {
@@ -44,6 +46,7 @@
             }
             break;
         case "ArrowRight":
+        case "d":
             if (($gameIndex + 1) % sqrt === 0 || $gameArray[$gameIndex + 1] === "R") {
                 e.preventDefault();
             } else {
@@ -51,6 +54,7 @@
             }
             break;
         case "ArrowUp":
+        case "w":
             if ($gameIndex < sqrt || $gameArray[$gameIndex - sqrt] === "R") {
                 e.preventDefault();
             } else {
@@ -58,6 +62,7 @@
             }
             break;
         case "ArrowDown":
+        case "s":
             if (
                 $gameIndex >= (array.length - sqrt) ||
                 $gameArray[$gameIndex + sqrt] === "R"
@@ -67,8 +72,8 @@
                 gameIndex.update(index => index + sqrt);
             }
             break;
+        }
     }
-}
 </script>
 
 

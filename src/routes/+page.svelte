@@ -1,31 +1,21 @@
-<body class="flex items-center justify-center h-screen w-screen">
-    <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-    <div class="flex flex-col z-50">
-        <div class="fade-in-text border-b-[1px] border-white/20">
-            <p class="i100 text-center text-white text-[12rem]">cube<span class="text-blue-500">game</span></p>
-        </div>
-        <div class="flex justify-between fade-in-button">
-            <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="game">play</a>
-            <a class="text-white hover:text-blue-300 cursor-pointer duration-200 ease-out i100 text-[4rem]" href="https://github.com/voltration/cubegame">source code</a>
+<script>
+	import { goto } from "$app/navigation";
+	import { levels } from "$lib/Levels";
+	import Letterbox from "$lib/components/Letterbox.svelte";
+	import Letterlogo from "$lib/components/Letterlogo.svelte";
+	import { currentLevel, resetCounter } from "$lib/user.writable";
+
+</script>
+
+<div class="flex items-center justify-center h-screen">
+    <div class="md:scale-125 flex flex-col gap-8">
+        <Letterlogo />
+        <div class="flex flex-col gap-4">
+            <a href="/game" class="w-full flex items-center justify-center ease-in-out hover:scale-95 duration-300 shadow-2xl shadow-blue-950 border-blue-500/40 border-2 rounded-md px-4 py-1 text-white i500">Play</a>
+            <a href="/tutorial" class="w-full flex items-center justify-center ease-in-out hover:scale-95 duration-300 shadow-2xl shadow-blue-950 border-blue-500/40 border-2 rounded-md px-4 py-1 text-white i500">Tutorial</a>
+            <button on:click={resetCounter} class="w-full ease-in-out hover:scale-95 duration-300 shadow-2xl shadow-blue-950 border-blue-500/40 border-2 rounded-md px-4 py-1 text-white i500">Reset progression</button>
+            <a href="https://github.com/voltration/cubegame" class="w-full bg-blue-950/40 ease-in-out hover:scale-95 duration-300 shadow-2xl shadow-blue-950 border-blue-500/40 border-2 rounded-md px-4 py-2 mt-2 text-white flex items-center justify-center i500"><img class="size-6" src="./github-mark.svg" alt="Github"></a>
         </div>
     </div>
-</body>
-
-<style>
-    @keyframes fadeInText {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-    }
-
-    @keyframes fadeInButton {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-    }
-    .fade-in-text {
-    animation: fadeInText 1s;
-    }
-
-    .fade-in-button {
-    animation: fadeInButton 2s;
-    }
-</style>
+    
+</div>

@@ -2,9 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.o700 {
+    font-family: 'Outfit Variable', sans-serif;
+    font-weight: 700;
+}
+
+.i900 {
+    font-family: 'Inter Variable', sans-serif;
+    font-weight: 900;
+}
+
+.i800 {
+    font-family: 'Inter Variable', sans-serif;
+    font-weight: 800;
+}
+
 .i700 {
     font-family: 'Inter Variable', sans-serif;
     font-weight: 700;
+}
+
+.i600 {
+    font-family: 'Inter Variable', sans-serif;
+    font-weight: 600;
+}
+
+.i500 {
+    font-family: 'Inter Variable', sans-serif;
+    font-weight: 500;
 }
 
 .i400 {

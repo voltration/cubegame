@@ -3,22 +3,13 @@
 	import "../app.css";
 	import '@fontsource-variable/inter';
 	import { goto } from "$app/navigation";
-
-	let aspectRatio = 0;
-
-	function calculateAspectRatio() {
-		const screenWidth = window.screen.width;
-		const screenHeight = window.screen.height;
-		aspectRatio = screenWidth / screenHeight;
-  	}
-
-	onMount(() => {
-		calculateAspectRatio();
-		
-		if (aspectRatio !== 16 / 9) {
-			goto("/device");
-		}
-	})
+	import '@fontsource-variable/outfit';
+	import { Toaster } from "svelte-sonner";
 </script>
 
-<slot />
+
+<div class="h-screen w-screen">
+	<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+	<slot />
+	<Toaster richColors />
+</div>

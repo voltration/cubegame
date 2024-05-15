@@ -40,11 +40,10 @@
 
 <body>
 
-    <div class="flex items-center justify-center h-screen">
-        <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+    <div class="flex items-center justify-center h-screen overflow-hidden">
         {#if completed}
             <div class="absolute top-0">
-                <div use:confetti></div>
+                <div class="overflow-hidden" use:confetti></div>
             </div>
             <div class="flex flex-col">
                 <a on:click={() => $currentLevel = 1} href="/" class="i100 text-center  text-white text-[4rem]">cube<span class="text-blue-500">game</span></a>
@@ -65,6 +64,9 @@
                             <p class="i400 text text-white">{levelsLeft} levels left</p>
                         </div>
                         <TutorialButton />
+                        {#if dev}
+                            <input bind:value={$currentLevel} class="border-[1px] rounded-md border-blue-500/30 border-white bg-transparent text-white p-2">
+                        {/if}
                     </div>
                 </div>
                 <div class="flex justify-between gap-24">
@@ -77,9 +79,6 @@
                         {/if}
                     {/key}
                 </div>
-                {#if dev}
-                    <input bind:value={$currentLevel} class="border-[1px] rounded-md border-blue-500/30 border-white bg-transparent text-white p-2">
-                {/if}
             </div>
         {/if}
     </div>

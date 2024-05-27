@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { leftWin, rightWin } from "$lib/user.writable";
+	import { swipe } from "svelte-gestures";
     import Box from "./Box.svelte";
     import { onMount } from "svelte";
 	import { writable } from "svelte/store";
-
     export let array: string[];
     export let index: number;
     export let side: string;
@@ -74,14 +74,45 @@
             break;
         }
     }
+
+    function handler(event) {
+        switch (event.detail.direction) {
+        case "left":
+            if ($gameIndex % sqrt === 0 || $gameArray[$gameIndex - 1] === "R") {
+                    event.preventDefault();
+                } else {
+                    gameIndex.update(index => index - 1);
+                }
+            break;
+        case "right":
+            if (($gameIndex + 1) % sqrt === 0 || $gameArray[$gameIndex + 1] === "R") {
+            } else {
+                gameIndex.update(index => index + 1);
+            }
+            break;
+        case "top":
+            if ($gameIndex < sqrt || $gameArray[$gameIndex - sqrt] === "R") {
+            } else {
+                gameIndex.update(index => index - sqrt);
+            }
+            break;
+        case "bottom":
+            if (
+                $gameIndex >= (array.length - sqrt) ||
+                $gameArray[$gameIndex + sqrt] === "R"
+            ) {
+            } else {
+                gameIndex.update(index => index + sqrt);
+            }
+            break;
+        }
+    }
 </script>
 
 
 <svelte:window on:keydown={(e) => onKeyDown(e)} />
-<body>
-    <div bind:this={div} class="grid grid-cols-3 gap-4">
-        {#each array as item, i}
-            <Box array={$gameArray} index={i} playerIndex={$gameIndex} />
-        {/each}
-    </div>
-</body>
+<div use:swipe={{ timeframe: 300, minSwipeDistance: 1}} on:swipe={handler} bind:this={div} class="grid grid-cols-3 gap-4">
+    {#each array as item, i}
+        <Box array={$gameArray} index={i} playerIndex={$gameIndex} />
+    {/each}
+</div>

@@ -25,7 +25,7 @@
 </script>
 
 <body>
-    <div bind:this={div} class="size-20 border-b-8 rounded-md flex items-center justify-center">
+    <div bind:this={div} class="size-16 md:size-20 border-b-8 rounded-md flex items-center justify-center">
         {#if playerIndex == index}
             <Player />
         {/if}

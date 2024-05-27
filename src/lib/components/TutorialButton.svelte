@@ -18,8 +18,8 @@
         </div>
     </Content>
     <Trigger>
-        <button class="rounded-md border-2 bg-blue-500/20  border-blue-500/20 shadow-lg shadow-blue-950/30 p-2 px-6">
-            <p class="i400 text text-white">Tutorial</p>
+        <button>
+            <p class="i400 text text-white/90 rounded-md border-2 bg-blue-500/20  border-blue-500/20 shadow-lg shadow-blue-950/30 p-2 px-6">Tutorial</p>
         </button>
     </Trigger>
   </Modal>

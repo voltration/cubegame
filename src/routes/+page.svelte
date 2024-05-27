@@ -7,7 +7,7 @@
 
 </script>
 
-<div class="flex items-center justify-center h-screen">
+<div class="flex justify-center mt-24">
     <div class="md:scale-125 flex flex-col gap-8">
         <Letterlogo />
         <div class="flex flex-col gap-4">

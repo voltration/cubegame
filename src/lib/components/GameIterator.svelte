@@ -4,6 +4,8 @@
     import Box from "./Box.svelte";
     import { onMount } from "svelte";
 	import { writable } from "svelte/store";
+
+    export let canMove: boolean = true;
     export let array: string[];
     export let index: number;
     export let side: string;
@@ -36,7 +38,8 @@
     export function onKeyDown(e: KeyboardEvent) {
     const sqrt = Math.sqrt($gameArray.length);
 
-    switch (e.key) {
+    if (canMove) {
+        switch (e.key) {
         case "ArrowLeft":
         case "a":
             if ($gameIndex % sqrt === 0 || $gameArray[$gameIndex - 1] === "R") {
@@ -73,6 +76,7 @@
             }
             break;
         }
+    }
     }
 
     function handler(event) {

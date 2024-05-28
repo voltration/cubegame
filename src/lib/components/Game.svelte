@@ -32,7 +32,7 @@
 </script>
 
 <div class="flex flex-col gap-8 h-screen items-center pt-4">
-    {#if completed}
+    {#if !completed}
         <div class="flex flex-col gap-4">
             <a href="/" class="i100 text-center  text-white text-6xl">cube<span class="text-blue-500">game</span></a>
             <div class="flex flex-row w-full justify-between gap-2">
